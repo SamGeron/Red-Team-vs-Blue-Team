@@ -2,7 +2,13 @@
 
 # **NETWORK TOPOLOGY**
 
-
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Topology.png)
+____________________________________________________________________________________________
+### *Red Team Environment*
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Red%20Team.png)
+____________________________________________________________________________________________
+### *Blue Team Environment*
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Blue%20Team.png)
 
 # **RED TEAM**
 ## Penetration Test
@@ -12,60 +18,63 @@
 **Discover target IP:**
 
 To discover the target ip:
-
+```
 netdiscover -r
+```
 
-![](RackMultipart20201208-4-1xqs3pk_html_7941588c79f74b33.png) p1
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture1.png)
 
-![](RackMultipart20201208-4-1xqs3pk_html_cedf5d1d63b30f7f.png) p2
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture2.png)
 
-192.168.1.1 is the gateway ip, from Hyper-V
+| 192.168.1.1 | Gateway IP, Hyper-V |
 
-192.168.1.100 is the ELK server
+| 192.168.1.100 | ELK server |
 
-192.168.1.105 is the target machine
+| 192.168.1.105 | Capstone, target machine |
 
 **Service and version scan:**
 
+```
 nmap -sV -v 192.168.1.105
+```
 
 Port 22 – SSH - with OpenSSH 7.6p1
 
 Port 80 – HTTP - with Apache httpd 2.4.29
 
-![](RackMultipart20201208-4-1xqs3pk_html_c6292e6a1a8f6f30.png) p3
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture3.png)
 
-![](RackMultipart20201208-4-1xqs3pk_html_78d6c7d7aa59b9dd.png) p4
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture4.png)
 
 **Aggressive scan:**
 
 A simple aggressive scan reveals a webserver directory structure on tcp port 80, which is a http port, and two potential usernames of employees – ashton and hannah (which will be more relevant for bruteforcing later):
 
-![](RackMultipart20201208-4-1xqs3pk_html_f1bdb40627286b46.png) p5
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture5.png)
 
-![](RackMultipart20201208-4-1xqs3pk_html_bcbddb44abe4680e.gif) ![](RackMultipart20201208-4-1xqs3pk_html_4b81eb9a47271780.png) p6
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture6.png)
 
 **Navigating the Webserver:**
 
 As this is a webserver, we can investigate further from a browser in the attacker machine:
 
-![](RackMultipart20201208-4-1xqs3pk_html_f3073b14398f14a9.gif) ![](RackMultipart20201208-4-1xqs3pk_html_a6b2d942f1b25c4c.png) p7
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture7.png)
 
 In a text document the blog directory we can see a 3rd potential username – Ryan, who would potentially have the highest level access as CEO:
 
-![](RackMultipart20201208-4-1xqs3pk_html_2e92984833eeaae6.png) p8
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture8.png)
 
 In the _company folders_ directory, we can see reference to a &quot;_secret\_folder_&quot; in ALL documents within this directory, which is now a target for this Penetration Test.
 
-![](RackMultipart20201208-4-1xqs3pk_html_33a7aa8c633a5aff.gif) ![](RackMultipart20201208-4-1xqs3pk_html_e3e77e96f478688f.png) p9
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture9.png)
 
 The _meet\_our\_team_ folder confirms the three potential users, and each document references the _secret\_folder:_
 
-![](RackMultipart20201208-4-1xqs3pk_html_5e0a83a8c4781223.gif) ![](RackMultipart20201208-4-1xqs3pk_html_f446396bd3b91940.png) p10
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture10.png)
 
 As we can see below, we will need Ashton&#39;s password to gain access to the secure hidden folder.
 
-![](RackMultipart20201208-4-1xqs3pk_html_d4245b710fc193fa.gif) ![](RackMultipart20201208-4-1xqs3pk_html_ff2dc87667b7c29d.png) p11
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture11.png)
 
 **Vulnerability scan:**
 
@@ -77,13 +86,13 @@ Aggressive scan with a vulnerability script reveals:
 - SQL Injection vulnerability across all directories on the webserver
 - CVE-2017-15710 – Apache httpd vulnerability
 
-![](RackMultipart20201208-4-1xqs3pk_html_5b7d1039315f0990.png) p12
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture12.png)
 
-![](RackMultipart20201208-4-1xqs3pk_html_4155665b12f97f60.gif) ![](RackMultipart20201208-4-1xqs3pk_html_85975e97be642379.gif) ![](RackMultipart20201208-4-1xqs3pk_html_6e3476da6cb66e32.png) p13
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture13.png)
 
-![](RackMultipart20201208-4-1xqs3pk_html_a48cf6f119d2e065.png) p14
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture14.png)
 
-![](RackMultipart20201208-4-1xqs3pk_html_db1129f5a05a0267.gif) ![](RackMultipart20201208-4-1xqs3pk_html_26f089b9205399ee.png) p15
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture15.png)
 
 **Bruteforce:**
 
@@ -91,45 +100,47 @@ Now that we have some usernames and a main target - Ashton, using hydra we can a
 
 Ashton, the CEO, had a common password within our password list. Using the following command, we could get Ashton&#39;s password.
 
+```
 hydra -l ashton -P /opt/rockyou.txt -s 80 -f -vV 192.168.1.105 http-get &quot;/company\_folders/secret\_folder&quot;
+```
 
-![](RackMultipart20201208-4-1xqs3pk_html_fae62275478e86aa.gif) ![](RackMultipart20201208-4-1xqs3pk_html_17ec5ee6be931c92.png) p16
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture16.png)
 
 **SSH:**
 
 Using Ashton&#39;s credentials we could gain ssh entry into the server.
 
-![](RackMultipart20201208-4-1xqs3pk_html_89d0c984e3b7a816.png) p17
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture17.png)
 
-![](RackMultipart20201208-4-1xqs3pk_html_5f61cc0e5b36a764.png) p18
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture18.png)
 
 In the root home directory we could pickup a flag.
 
-![](RackMultipart20201208-4-1xqs3pk_html_7fe64f049c0774ff.gif) ![](RackMultipart20201208-4-1xqs3pk_html_13cc37d148272839.gif) ![](RackMultipart20201208-4-1xqs3pk_html_d0c9ea4b23ed3c46.png) p19
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture19.png)
 
 Using the same credentials, we could access the protected hidden folder.
 
-![](RackMultipart20201208-4-1xqs3pk_html_b37aee0f89c0c866.png) p20
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture20.png)
 
 **Password hash:**
 
 Within this folder was a document with instructions to connect to a _corp\_server_. Included in the document are Ryan&#39;s hashed credentials and reference to a webdav directory
 
-![](RackMultipart20201208-4-1xqs3pk_html_e0a16dd0c0c6e35f.gif) ![](RackMultipart20201208-4-1xqs3pk_html_559a3722861a9978.png) p21
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture21.png)
 
-![](RackMultipart20201208-4-1xqs3pk_html_6ba23ae193f3da9a.gif) ![](RackMultipart20201208-4-1xqs3pk_html_d11f22b253aabf39.gif) ![](RackMultipart20201208-4-1xqs3pk_html_77dcab3edc3e3126.png) p22
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture22.png)
 
 Th hashed md5 password was instantly cracked using Crackstation, revealing the password _linux4u_
 
-![](RackMultipart20201208-4-1xqs3pk_html_ff5640c3ef962af.gif) ![](RackMultipart20201208-4-1xqs3pk_html_704f1a2137146c54.png) p23
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture23.png)
 
 **Webdav:**
 
 We could then login to webdav using Ryan&#39;s credentials.
 
-![](RackMultipart20201208-4-1xqs3pk_html_4fc01347812dacb2.png) p24
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture24.png)
 
-![](RackMultipart20201208-4-1xqs3pk_html_b314f1e8f0a99d14.png) p25
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture25.png)
 
 **Reverse Shell:**
 
@@ -137,47 +148,49 @@ The next task was to upload a shell script to webdav, in order to create a rever
 
 Using msfvenom we created a payload – shell.php
 
-![](RackMultipart20201208-4-1xqs3pk_html_f14d223bac9f82d2.gif) ![](RackMultipart20201208-4-1xqs3pk_html_162b62d8c5228498.gif) ![](RackMultipart20201208-4-1xqs3pk_html_692ff9c9865d6bd0.png) **p26**
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture26.png)
 
 Using cadaver and Ryan&#39;s credentials we accessed webdav, and uploaded the payload to the webdav directory.
 
-![](RackMultipart20201208-4-1xqs3pk_html_cb2cced68ec1bacd.gif) ![](RackMultipart20201208-4-1xqs3pk_html_136e540493ffd44d.png) **p27**
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture27.png)
 
-![](RackMultipart20201208-4-1xqs3pk_html_8821b2740ffe5594.gif) ![](RackMultipart20201208-4-1xqs3pk_html_38acf980c0c38c0f.png) **p28**
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture28.png)
 
 Once the payload was successfully uploaded, in order to create the reverse shell, we setup a listener using Metasploit.
 
-![](RackMultipart20201208-4-1xqs3pk_html_8a98d39918d089f5.png) **p29**
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture29.png)
 
 After loading the exploit and activating the shell.php we uploaded earlier by clicking on it on the webserver, the target server connected to our listener and launched a meterpreter session into their system.
 
-![](RackMultipart20201208-4-1xqs3pk_html_51d959a89c477186.png) **p30**
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture30.png)
 
 **GAINING INTERACTIVE SHELL:**
 
+```
 python -c &#39;import pty; pty.spawn(&quot;/bin/bash&quot;)&#39;
+```
 
-![](RackMultipart20201208-4-1xqs3pk_html_434692ee26e60ce9.png) p31
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture31.png)
 
 **FINDING THE FLAG:**
 
 The next flag was located in the root directory.
 
-![](RackMultipart20201208-4-1xqs3pk_html_1152c3a238566b92.gif) ![](RackMultipart20201208-4-1xqs3pk_html_497a78d8b61b69d7.png) p32
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture32.png)
 
 Exit back to meterpreter.
 
-![](RackMultipart20201208-4-1xqs3pk_html_1152c3a238566b92.gif) ![](RackMultipart20201208-4-1xqs3pk_html_de9643a50261127e.png) p33
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture33.png)
 
-![](RackMultipart20201208-4-1xqs3pk_html_58fc958465dd43eb.png) **p34**
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture34.png)
 
 **EXFILTRATION:**
 
 The file was easily exfiltrated back to the attacker machine.
 
-![](RackMultipart20201208-4-1xqs3pk_html_77f6ff8f5c9b4751.png) **p35**
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture35.png)
 
-![](RackMultipart20201208-4-1xqs3pk_html_3618721709e861e2.gif) ![](RackMultipart20201208-4-1xqs3pk_html_97a557019a0b4c65.png) **p36**
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture36.png)
 
 
 ## Vulnerabilities
