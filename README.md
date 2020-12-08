@@ -125,6 +125,8 @@ Using Ashton's credentials we could gain ssh entry into the server.
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture18.png)
 
+#### **Flag 1**
+
 In the root home directory we could pickup a flag.
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture19.png)
