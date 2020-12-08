@@ -19,28 +19,28 @@ ________________________________________________________________________________
 
 To discover the target ip:
 ```
-netdiscover -r
+netdiscover -r <ip>
 ```
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture1.png)
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture2.png)
 
+| IP | Machine |
+|:-------------:|:-------------:|
 | 192.168.1.1 | Gateway IP, Hyper-V |
-
 | 192.168.1.100 | ELK server |
-
 | 192.168.1.105 | Capstone, target machine |
 
-**Service and version scan:**
+#### **Service and version scan:**
 
 ```
 nmap -sV -v 192.168.1.105
 ```
-
-Port 22 – SSH - with OpenSSH 7.6p1
-
-Port 80 – HTTP - with Apache httpd 2.4.29
+| Port | Service | Version |
+|:--:|:--:|:--:|
+| Port 22 | SSH | OpenSSH 7.6p1 |
+| Port 80 | HTTP | Apache httpd 2.4.29 |
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture3.png)
 
@@ -101,14 +101,14 @@ Now that we have some usernames and a main target - Ashton, using hydra we can a
 Ashton, the CEO, had a common password within our password list. Using the following command, we could get Ashton&#39;s password.
 
 ```
-hydra -l ashton -P /opt/rockyou.txt -s 80 -f -vV 192.168.1.105 http-get &quot;/company\_folders/secret\_folder&quot;
+hydra -l ashton -P /opt/rockyou.txt -s 80 -f -vV 192.168.1.105 http-get "/company_folders/secret_folder"
 ```
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture16.png)
 
 **SSH:**
 
-Using Ashton&#39;s credentials we could gain ssh entry into the server.
+Using Ashton's credentials we could gain ssh entry into the server.
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture17.png)
 
@@ -167,7 +167,7 @@ After loading the exploit and activating the shell.php we uploaded earlier by cl
 **GAINING INTERACTIVE SHELL:**
 
 ```
-python -c &#39;import pty; pty.spawn(&quot;/bin/bash&quot;)&#39;
+python -c 'import pty; pty.spawn("/bin/bash")'
 ```
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture31.png)
