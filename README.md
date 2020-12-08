@@ -45,7 +45,7 @@ nmap -sV -v 192.168.1.105
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture4.png)
 
-**Aggressive scan:**
+### **Aggressive scan:**
 
 ```
 nmap -A -vvv 192.168.1.105
@@ -57,7 +57,7 @@ A simple aggressive scan reveals a webserver directory structure on tcp port 80,
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture6.png)
 
-**Navigating the Webserver:**
+### **Navigating the Webserver:**
 
 As this is a webserver, we can investigate further from a browser in the attacker machine:
 
@@ -79,7 +79,7 @@ As we can see below, we will need Ashton&#39;s password to gain access to the se
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture11.png)
 
-**Vulnerability scan:**
+### **Vulnerability scan:**
 
 ```
 nmap -A --script=vuln -vvv 192.168.1.105
@@ -101,7 +101,7 @@ Aggressive scan with a vulnerability script reveals:
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture15a.png)
 
-**Bruteforce:**
+### **Bruteforce:**
 
 Now that we have some usernames and a main target - Ashton, using hydra we can attempt to bruteforce the login for the _secret\_folder_.
 
@@ -113,7 +113,7 @@ hydra -l ashton -P /opt/rockyou.txt -s 80 -f -vV 192.168.1.105 http-get "/compan
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture16.png)
 
-**SSH:**
+### **SSH:**
 
 Using Ashton's credentials we could gain ssh entry into the server.
 
@@ -129,7 +129,7 @@ Using the same credentials, we could access the protected hidden folder.
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture20.png)
 
-**Password hash:**
+### **Password hash:**
 
 Within this folder was a document with instructions to connect to a _corp\_server_. Included in the document are Ryan&#39;s hashed credentials and reference to a webdav directory
 
@@ -141,7 +141,7 @@ Th hashed md5 password was instantly cracked using Crackstation, revealing the p
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture23.png)
 
-**Webdav:**
+### **Webdav:**
 
 We could then login to webdav using Ryan&#39;s credentials.
 
@@ -149,7 +149,7 @@ We could then login to webdav using Ryan&#39;s credentials.
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture25.png)
 
-**Reverse Shell:**
+### **Reverse Shell:**
 
 The next task was to upload a shell script to webdav, in order to create a reverse shell.
 
@@ -171,7 +171,7 @@ After loading the exploit and activating the shell.php we uploaded earlier by cl
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture30.png)
 
-**GAINING INTERACTIVE SHELL:**
+### **Gaining Interactive Shell:**
 
 ```
 python -c 'import pty; pty.spawn("/bin/bash")'
@@ -179,7 +179,7 @@ python -c 'import pty; pty.spawn("/bin/bash")'
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture31.png)
 
-**FINDING THE FLAG:**
+### **Finding Flag 2:**
 
 The next flag was located in the root directory.
 
@@ -191,7 +191,7 @@ Exit back to meterpreter.
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture34.png)
 
-**EXFILTRATION:**
+### **Exfiltration:**
 
 The file was easily exfiltrated back to the attacker machine.
 
