@@ -350,32 +350,32 @@ This vulnerability relates to malicious filenames, in which the end of filenames
 
 **Filtering for Nmap:**
 
-![](RackMultipart20201208-4-yclk7e_html_67e165aac4452723.png) **39**
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture39.png)
 
-![](RackMultipart20201208-4-yclk7e_html_faf77203fa135d5f.png) **40**
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture40.png)
 
 **Monitoring requests to the &quot;** _ **secret\_folder** _ **&quot;:**
 
-![](RackMultipart20201208-4-yclk7e_html_3076f7c7ca66051e.png) **41**
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture41.png)
 
-![](RackMultipart20201208-4-yclk7e_html_420c9d8fd3458589.png) **42**
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture42.png)
 
-![](RackMultipart20201208-4-yclk7e_html_f5a0be365ccdd81e.png) **43**
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture43.png)
 
 **Filtering for the Hydra brute force attack:**
 
 There were 346,595 bruteforce attempts made with Hydra.
 
-![](RackMultipart20201208-4-yclk7e_html_db88fe31f6051087.png) **44**
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture44.png)
 
-![](RackMultipart20201208-4-yclk7e_html_547f7360a420d839.png) **45**
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture45.png)
 
 **Finding the WebDAV connection:**
 
 A reverse shell in webdav was used 20 times.
 
-![](RackMultipart20201208-4-yclk7e_html_2cb5497fc9574151.png) **46**
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture46.png)
 
-![](RackMultipart20201208-4-yclk7e_html_c4c29743bdf130c3.png) **47**
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture47.png)
 
-![](RackMultipart20201208-4-yclk7e_html_83347176291757c3.png) **48**
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture48.png)
