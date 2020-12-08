@@ -380,8 +380,13 @@ A reverse shell in webdav was used 20 times.
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture48.png)
 
+
+
+
 # **BLUE TEAM**
 ## **Proposed Alarms and Mitigation Strategies**
+
+
 
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/blue1.PNG)
