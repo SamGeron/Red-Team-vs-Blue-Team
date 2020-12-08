@@ -343,3 +343,39 @@ This vulnerability relates to malicious filenames, in which the end of filenames
 
 - In systems where file uploads are externally blocked, this vulnerability can be exploited to upload malicious files
 - Apache httpd versions 2.2.0 to 2.4.29 are vulnerable - upgrade to 2.2.46
+
+# **BLUE TEAM**
+
+**Identifying the port scan:**
+
+**Filtering for Nmap:**
+
+![](RackMultipart20201208-4-yclk7e_html_67e165aac4452723.png) **39**
+
+![](RackMultipart20201208-4-yclk7e_html_faf77203fa135d5f.png) **40**
+
+**Monitoring requests to the &quot;** _ **secret\_folder** _ **&quot;:**
+
+![](RackMultipart20201208-4-yclk7e_html_3076f7c7ca66051e.png) **41**
+
+![](RackMultipart20201208-4-yclk7e_html_420c9d8fd3458589.png) **42**
+
+![](RackMultipart20201208-4-yclk7e_html_f5a0be365ccdd81e.png) **43**
+
+**Filtering for the Hydra brute force attack:**
+
+There were 346,595 bruteforce attempts made with Hydra.
+
+![](RackMultipart20201208-4-yclk7e_html_db88fe31f6051087.png) **44**
+
+![](RackMultipart20201208-4-yclk7e_html_547f7360a420d839.png) **45**
+
+**Finding the WebDAV connection:**
+
+A reverse shell in webdav was used 20 times.
+
+![](RackMultipart20201208-4-yclk7e_html_2cb5497fc9574151.png) **46**
+
+![](RackMultipart20201208-4-yclk7e_html_c4c29743bdf130c3.png) **47**
+
+![](RackMultipart20201208-4-yclk7e_html_83347176291757c3.png) **48**
