@@ -18,7 +18,7 @@ ________________________________________________________________________________
 
 To discover the target ip:
 ```
-netdiscover -r <ip>
+netdiscover -r <ip subnet>
 ```
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture1.png)
