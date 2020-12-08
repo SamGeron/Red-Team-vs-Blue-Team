@@ -115,6 +115,10 @@ hydra -l ashton -P /opt/rockyou.txt -s 80 -f -vV 192.168.1.105 http-get "/compan
 
 ### **SSH:**
 
+```
+ssh ashton@192.168.1.105
+```
+
 Using Ashton's credentials we could gain ssh entry into the server.
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture17.png)
