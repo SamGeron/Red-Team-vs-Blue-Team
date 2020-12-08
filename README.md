@@ -380,16 +380,16 @@ A reverse shell in webdav was used 20 times.
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture48.png)
 
-# **Blue Team
+# **BLUE TEAM**
 ## **Proposed Alarms and Mitigation Strategies**
 
 
-![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Blue1.png)
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/blue1.PNG)
 
-![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Blue2.png)
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/blue2.PNG)
 
-![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Blue3.png)
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/blue3.PNG)
 
-![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Blue4.png)
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/blue4.PNG)
 
-![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Blue5.png)
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/blue5.PNG)
