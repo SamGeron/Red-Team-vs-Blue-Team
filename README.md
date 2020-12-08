@@ -10,12 +10,11 @@ ________________________________________________________________________________
 ### *Blue Team Environment*
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Blue%20Team.png)
 
-# **RED TEAM**
-## Penetration Test
+# **RED TEAM - Penetration Test**
 
 ## **EXPLOITATION**
 
-**Discover target IP:**
+### **Discover target IP:**
 
 To discover the target ip:
 ```
@@ -32,7 +31,7 @@ netdiscover -r <ip>
 | 192.168.1.100 | ELK server |
 | 192.168.1.105 | Capstone, target machine |
 
-#### **Service and version scan:**
+### **Service and version scan:**
 
 ```
 nmap -sV -v 192.168.1.105
