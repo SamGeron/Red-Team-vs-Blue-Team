@@ -47,6 +47,10 @@ nmap -sV -v 192.168.1.105
 
 **Aggressive scan:**
 
+```
+nmap -A -vvv 192.168.1.105
+```
+
 A simple aggressive scan reveals a webserver directory structure on tcp port 80, which is a http port, and two potential usernames of employees – ashton and hannah (which will be more relevant for bruteforcing later):
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture5.png)
@@ -77,6 +81,10 @@ As we can see below, we will need Ashton&#39;s password to gain access to the se
 
 **Vulnerability scan:**
 
+```
+nmap -A --script=vuln -vvv 192.168.1.105
+```
+
 Returning to scanning for further recon.
 
 Aggressive scan with a vulnerability script reveals:
@@ -87,11 +95,11 @@ Aggressive scan with a vulnerability script reveals:
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture12.png)
 
-![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture13.png)
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture13a.png)
 
 ![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture14.png)
 
-![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture15.png)
+![alt-text](https://github.com/SamGeron/Red-Team-vs-Blue-Team/blob/main/images/Picture15a.png)
 
 **Bruteforce:**
 
